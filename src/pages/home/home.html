@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hello</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="MMM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+
+  <ion-grid>
+    <!--first Row-->
+    <ion-row>
+      <!--Column service input -->
+      <ion-col>
+        <ion-item>
+          <ion-label>input1</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="input1" 
+            (ngModelChange)="input1 = convertToNumber($event)">            
+          </ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>input2</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="input2" 
+            (ngModelChange)="input2 = convertToNumber($event)">          
+          </ion-input>
+        </ion-item>      
+        <ion-item>
+          <ion-label>Total Sale</ion-label>
+          <ion-input 
+            class="result" 
+            type="number" 
+            disabled="true" 
+            [(ngModel)]="totalSale" 
+            (ngModelChange)="totalSale = convertToNumber($event)">          
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <!--Column end-of-day-input -->
+      <ion-col>
+        <ion-item>
+          <ion-label>CC</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="cash" 
+            (ngModelChange)="cash = convertToNumber($event)">            
+          </ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>DD</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="debit" 
+            (ngModelChange)="debit = convertToNumber($event)">          
+          </ion-input>
+        </ion-item>      
+        
+        <ion-item>
+          <ion-label>GC ban</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="gcBuy" 
+            (ngModelChange)="gcBuy = convertToNumber($event)">          
+          </ion-input>
+        </ion-item>      
+        
+        <ion-item>
+          <ion-label>GC xai</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="gcRedeem" 
+            (ngModelChange)="gcRedeem = convertToNumber($event)">          
+          </ion-input>
+        </ion-item>      
+
+        <ion-item>
+          <ion-label>Exp</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="exp" 
+            (ngModelChange)="exp = convertToNumber($event)">          
+          </ion-input>
+        </ion-item>      
+        
+        <ion-item>
+          <ion-label>other Income</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="otherInc" 
+            (ngModelChange)="otherInc = convertToNumber($event)">          
+          </ion-input>
+        </ion-item>      
+      </ion-col>  
+    </ion-row>
+  </ion-grid>  
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>    
+        <button ion-button round (click)="getResult()">Calculate</button>
+      </ion-col>  
+
+      <ion-col>  
+        <ion-item>          
+          <ion-input 
+            type="text" 
+            [(ngModel)]="resultText">            
+          </ion-input>
+        </ion-item>      
+      </ion-col>  
+    </ion-row>
+  </ion-grid>
+</ion-content>
