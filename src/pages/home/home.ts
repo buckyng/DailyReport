@@ -6,6 +6,8 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  myDate: String = new Date().toISOString();
+  
 	input1: number = 0;
 	input2: number = 0;
 	totalSale: number = 0;
@@ -17,7 +19,7 @@ export class HomePage {
 	exp: number = 0;
 	otherInc: number = 0;
 	
-	resultText: string;
+	resultText: String;
 
   constructor(public navCtrl: NavController) {
 
@@ -31,7 +33,7 @@ export class HomePage {
   	if(result < 0) {
   		this.resultText = "OK"
   	} else {
-  		this.resultText = "Thieu " +result.toString()
+  		this.resultText = "Thieu " +result.toFixed(2).toString()
   	}
   
   }
