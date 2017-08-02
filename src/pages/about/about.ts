@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -7,8 +8,34 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  notes: any = [];
 
+  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController, public alertCtrl: AlertController) {}
+
+  ionViewDidLoad(data) {  
+  	console.log(data)	;
+
+  	this.notes.push(
+  		{
+  			date: this.navParams.get('date'),
+	  		totalSale: this.navParams.get('totalSale'),
+	  		cash: this.navParams.get('cash'),
+	  		debit: this.navParams.get('debit'),
+	  		gcBuy: this.navParams.get('gcBuy'),
+	  		gcRedeem: this.navParams.get('gcRedeem'),
+	  		exp: this.navParams.get('exp'),
+	  		otherInc: this.navParams.get('otherInc')
+  		}
+  	);
   }
 
+    deleteNote(note){
+ 
+        let index = this.notes.indexOf(note);
+ 
+        if(index > -1){
+            this.notes.splice(index, 1);
+        }
+    }
+  
 }
