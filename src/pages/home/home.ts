@@ -8,9 +8,6 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
     
   myDate: String = new Date().toISOString();
-
-	input1: number = 0;
-	input2: number = 0;
 	totalSale: number = 0;
 
 	cash: number = 0;
@@ -22,14 +19,33 @@ export class HomePage {
 	
 	resultText: String;  
 
+  employees: any;
+
   constructor(public navCtrl: NavController) {    
-     
+     this.employees = [
+            {name: 'Thi', sale: 0},
+            {name: 'Trizzee', sale: 0},
+            {name: 'Mami', sale: 0},
+            {name: 'Eva', sale: 0},
+            {name: 'Michelle', sale: 0},
+            {name: 'Trina', sale: 0},
+            {name: 'Ivy', sale: 0}
+        ];
+
   }
 
   public convertToNumber(event):number {  return +event; }
+
+  customTrackBy(index: number, obj: any): any {
+    return index;
+  }
   
   getResult() {
-  	this.totalSale = this.input1 + this.input2;
+    var totalSale = 0;
+    this.employees.forEach(function(employee) {
+      totalSale += employee.sale
+    })
+    this.totalSale = totalSale;
   	var result = this.totalSale + this.otherInc - this.exp + (this.gcBuy - this.gcRedeem - this.debit) / 1.13 - this.cash;
   	if(result < 0) {
   		this.resultText = "OK"
