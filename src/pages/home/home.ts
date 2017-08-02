@@ -24,6 +24,8 @@ export class HomePage {
 
   employees: any;
 
+  sales: any = [];
+
   constructor(public navCtrl: NavController, public storage: Storage, public modalCtrl: ModalController) {    
      this.employees = [
             {name: 'Thi', sale: 0},
@@ -55,20 +57,14 @@ export class HomePage {
   		this.resultText = "Thieu " +result.toFixed(2).toString()
   	}  
   }
+ 
+  saveReport() {
+    
+    this.sales.push({
+      date: this.myDate,
+      cash: this.cash
+    })
+    console.log(this.sales)
 
-  launchAboutPage() {
-   let data = {
-    date: this.myDate,
-    totalSale: this.totalSale, 
-    cash: this.cash, 
-    debit: this.debit, 
-    gcBuy: this.gcBuy, 
-    gcRedeem: this.gcRedeem, 
-    exp: this.exp, 
-    otherInc: this.otherInc   
-   };
-
-   this.navCtrl.push(AboutPage, data);    
-  }  
-
+  }
 }
