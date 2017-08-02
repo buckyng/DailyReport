@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, AlertController  } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AboutPage } from '../about/about';
+
 
 
 @Component({
@@ -26,7 +27,7 @@ export class HomePage {
 
   sales: any = [];
 
-  constructor(public navCtrl: NavController, public storage: Storage, public modalCtrl: ModalController) {    
+  constructor(public navCtrl: NavController, public storage: Storage, public modalCtrl: ModalController, private alertCtrl: AlertController) {    
      this.employees = [
             {name: 'Thi', sale: 0},
             {name: 'Trizzee', sale: 0},
@@ -59,12 +60,32 @@ export class HomePage {
   }
  
   saveReport() {
-    
-    this.sales.push({
-      date: this.myDate,
-      cash: this.cash
-    })
-    console.log(this.sales)
 
+   let alert = this.alertCtrl.create({
+    title: 'Confirm',
+    message: 'Do you want to save this transaction?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Confirm',
+        handler: () => {
+          this.sales.push({
+            date: this.myDate,
+            cash: this.cash
+          });  
+          
+        }
+      }
+    ]
+  });  
+  alert.present();
+  console.log(this.sales)
   }
+  
 }
