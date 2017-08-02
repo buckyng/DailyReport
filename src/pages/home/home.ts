@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { AboutPage } from '../about/about';
+
 
 @Component({
   selector: 'page-home',
@@ -21,7 +24,7 @@ export class HomePage {
 
   employees: any;
 
-  constructor(public navCtrl: NavController) {    
+  constructor(public navCtrl: NavController, public storage: Storage, public modalCtrl: ModalController) {    
      this.employees = [
             {name: 'Thi', sale: 0},
             {name: 'Trizzee', sale: 0},
@@ -31,9 +34,8 @@ export class HomePage {
             {name: 'Trina', sale: 0},
             {name: 'Ivy', sale: 0}
         ];
-
-  }
-
+  }  
+  
   public convertToNumber(event):number {  return +event; }
 
   customTrackBy(index: number, obj: any): any {
@@ -51,8 +53,22 @@ export class HomePage {
   		this.resultText = "OK"
   	} else {
   		this.resultText = "Thieu " +result.toFixed(2).toString()
-  	}
-  
+  	}  
   }
+
+  launchAboutPage() {
+   let data = {
+    date: this.myDate,
+    totalSale: this.totalSale, 
+    cash: this.cash, 
+    debit: this.debit, 
+    gcBuy: this.gcBuy, 
+    gcRedeem: this.gcRedeem, 
+    exp: this.exp, 
+    otherInc: this.otherInc   
+   };
+
+   this.navCtrl.push(AboutPage, data);    
+  }  
 
 }

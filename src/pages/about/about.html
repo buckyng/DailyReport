@@ -8,4 +8,22 @@
 
 <ion-content padding>
 
+ <ion-list>
+ 
+        <ion-item-sliding *ngFor="let note of notes">
+ 
+            <ion-item>
+                {{note.date}}
+            </ion-item>
+ 
+            <ion-item-options>               
+                <button ion-button icon-only (click)="deleteNote(note)" danger>
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+            </ion-item-options>
+ 
+        </ion-item-sliding>
+ 
+    </ion-list>
+
 </ion-content>
