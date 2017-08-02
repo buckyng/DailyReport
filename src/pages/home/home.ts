@@ -6,8 +6,9 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+    
   myDate: String = new Date().toISOString();
-  
+
 	input1: number = 0;
 	input2: number = 0;
 	totalSale: number = 0;
@@ -19,10 +20,10 @@ export class HomePage {
 	exp: number = 0;
 	otherInc: number = 0;
 	
-	resultText: String;
+	resultText: String;  
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController) {    
+     
   }
 
   public convertToNumber(event):number {  return +event; }
