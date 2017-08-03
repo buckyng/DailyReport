@@ -24,12 +24,12 @@
       <ion-col>
 
         <ion-list>
-          <ion-item *ngFor="let employee of employees; let i = index; trackBy: customTrackBy">
+          <ion-item *ngFor="let employee of postsService.employees;">
             <ion-label>{{employee.name}}</ion-label>
             <ion-input 
               type="number" 
-              [(ngModel)]="employees[i].sale"
-              (ngModelChange)="employees[i].sale = convertToNumber($event)">
+              [(ngModel)]="employee.sale"
+              (ngModelChange)="employee.sale = convertToNumber($event)">
             </ion-input>
           </ion-item>
         </ion-list>
